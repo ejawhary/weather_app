@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/dist/css/main.min.css">
+    <script src="/js/main.js" type="module"></script>
+    <title>Weather</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header flex-column">
+            <h1>Weather</h1>
+            <img id="weather-img" src="/img/icons/6.png" alt="weather image">
+        </header>
+        <section class="loc-date-temp-container flex-row">
+            <div class="loc-date-container">
+                <h2 id="loc" class="loc"><i class="fa fa-map-marker loc-icon"></i></h2>
+                <p id="date" class="date"></p>
+            </div>
+            <div class="temp-container">
+                <h2 class="temp" id="temp"></h2>
+            </div>       
+        </section>
+        <section class="card">
+            <div class="component">
+                <h3 class="component-item">Conditions: <span class="component-value" id="weather-str"></span></h3>
+            </div>
+            <div class="component">
+                <h3 class="component-item">Feels Like: <span class="component-value" id="real-feel"></span></h3>
+            </div>
+            <div class="component">
+                <h3 class="component-item">Precipitation: <span class="component-value" id="precipitation"></span></h3>
+            </div>
+            <div class="component">
+                <h3 class="component-item">Wind Direction: <span class="component-value" id="wind-direction"></span></h3>
+            </div>
+            <div class="component">
+                <h3 class="component-item">Wind Speed: <span class="component-value" id="wind-speed"></span></h3>
+            </div>
+            <div class="component">
+                <h3 class="component-item">Pressure: <span class="component-value" id="pressure"></span></h3>
+            </div>
+        </section>
+    </div>
+    <footer class="footer flex-row">
+        <button class="btn" id="curr-loc"><i class="fas fa-location-arrow"></i></button>
+        <button class="btn" id="refresh"><i class="fas fa-redo-alt" id="reload"></i></button>
+    </footer>
+</body>
+</html>
