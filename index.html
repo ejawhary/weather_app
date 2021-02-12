@@ -23,6 +23,9 @@
                 <h2 class="temp" id="temp"></h2>
             </div>       
         </section>
+        <section class="flex flex-column">
+            <button class="btn primaryBtn uiBtn" id="cityBtn">Select City</button>
+        </section>
         <section class="card">
             <div class="component">
                 <h3 class="component-item">Conditions: <span class="component-value" id="weather-str"></span></h3>
@@ -44,9 +47,22 @@
             </div>
         </section>
     </div>
+    <section class="city flex-column hidden" id="citySection">
+        <h3>Search for a city</h3>
+        <div class="x-btn-city flex-row" id="x-btn-city">
+            <div class="x" id="x">
+            </div>
+        </div>
+        <form id="cityForm" class="cityForm flex-row">
+            <label class="offScreen" for="cityInput">enter a city</label>
+            <input id ="searchInput" autocomplete="off" class="cityInput" type="text">
+            <div id="searchDel" role="button" tabindex="0" aria-label="clear search input" class="formDel hidden">X</div>
+            <button action="submit" id="searchBtn"><i class="fas fa-search"></i></button>
+        </form>
+    </section>
     <footer class="footer flex-row">
-        <button class="btn" id="curr-loc"><i class="fas fa-location-arrow"></i></button>
-        <button class="btn" id="refresh"><i class="fas fa-redo-alt" id="reload"></i></button>
+        <button class="btn uiBtn footerBtn" id="curr-loc"><i class="fas fa-location-arrow"></i></button>
+        <button class="btn uiBtn footerBtn" id="refresh"><i class="fas fa-redo-alt" id="reload"></i></button>
     </footer>
 </body>
 </html>

@@ -18,7 +18,7 @@ export class UI {
     paint(city, weatherData) {
         let date = new Date(weatherData.LocalObservationDateTime);
         date = date.toLocaleString('en-GB', { hour12: false});
-        console.log(date);
+        
         this.loc.textContent = city;
         // this.weatherImg.src = ("src","img/icons/"+weatherData.WeatherIcon+".png");
         // console.log(this.weatherImg.src);

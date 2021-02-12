@@ -1,22 +1,31 @@
 export class Storage {
-    
-    constuctor() {
-        
-        this.defaultCityId = "321626";
+
+    constructor() {
+
+        this.defaultCityId = "207931";
+        this.defaultCityName = "Dublin";
         this.cityId;
+        this.cityName;
     }
 
     getFromStorage() {
-        if(!localStorage.getItem("cityID") === null) {
+
+        if((localStorage.getItem("cityId") === null || localStorage.getItem("cityId") === null) ||(localStorage.getItem("cityId") === null && localStorage.getItem("cityId") === null)) {
             this.cityId = this.defaultCityId;
+            this.cityName = this.defaultCityName;
         } else {
-            this.cityId = localStorage.getItem("cityid");
+            this.cityId = localStorage.getItem("cityId");
+            this.cityName = localStorage.getItem("cityName");
         }
 
-        return this.cityId;
+        return {
+            cityId: this.cityId,
+            cityName: this.cityName
+        }
     }
 
-    setStorage(cityId) {
-        localStorage.setItem("cityID", cityId);
+    setStorage(cityId, cityName) {
+        localStorage.setItem("cityId", cityId);
+        localStorage.setItem("cityName", cityName)
     }
 }
