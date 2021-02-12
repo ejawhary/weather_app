@@ -2,7 +2,7 @@ export class City {
 
     constructor() {
 
-        this.apiKey = "2yxTr52jJg5mvQyuoDoNqlYXTzj6s3eK";
+        this.apiKey = "j3ENYGdCfdfY2owpRK1uoVFh5r3AAKAO";
         this.cityName;
         this.latitude;
         this.longitude;
