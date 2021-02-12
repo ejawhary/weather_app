@@ -2,30 +2,30 @@ export class Storage {
 
     constructor() {
 
-        this.defaultCityId = "207931";
-        this.defaultCityName = "Dublin";
-        this.cityId;
-        this.cityName;
+        this.defaultCityObj = {
+            cityId: "207931",
+            cityName: "Dublin"
+        }
+        this.cityObj;
     }
 
     getFromStorage() {
 
-        if((localStorage.getItem("cityId") === null || localStorage.getItem("cityId") === null) ||(localStorage.getItem("cityId") === null && localStorage.getItem("cityId") === null)) {
-            this.cityId = this.defaultCityId;
-            this.cityName = this.defaultCityName;
+        if(localStorage.getItem("cityObj") === null) {
+            this.cityObj = this.defaultCityObj;
         } else {
-            this.cityId = localStorage.getItem("cityId");
-            this.cityName = localStorage.getItem("cityName");
+            this.cityObj = JSON.parse(localStorage.getItem("cityObj"));
         }
 
-        return {
-            cityId: this.cityId,
-            cityName: this.cityName
-        }
+        return this.cityObj;
     }
 
     setStorage(cityId, cityName) {
-        localStorage.setItem("cityId", cityId);
-        localStorage.setItem("cityName", cityName)
+        this.cityObj = {
+            cityId: cityId,
+            cityName: cityName
+        }
+
+        localStorage.setItem("cityObj", JSON.stringify(this.cityObj));
     }
 }

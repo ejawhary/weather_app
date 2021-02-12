@@ -31,7 +31,7 @@ refreshBtn.addEventListener("click", () => {
 const init = async () => {
 
     const cityObjFromStorage = storage.getFromStorage();
-    
+    console.log(cityObjFromStorage)
     const cityObjFromApi = await cityGetCity(cityObjFromStorage.cityName);
     console.log(cityObjFromApi)
     
@@ -48,6 +48,7 @@ const init = async () => {
 const selectCity = async () => {
 
     const cityName = getUserInput();
+
     const cityObj = await cityGetCity(cityName);
     storage.setStorage(cityObj.cityId, cityObj.cityName);
     init();
