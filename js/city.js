@@ -13,7 +13,7 @@ export class City {
 
         this.cityName= cityName;
         console.log(this.cityName)
-        const url = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${this.apiKey}&q=${this.cityName}`
+        const url = `https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${this.apiKey}&q=${this.cityName}`
         console.log(url)
         this.url = url;
     }
