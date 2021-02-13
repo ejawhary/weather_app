@@ -35,6 +35,8 @@ refreshBtn.addEventListener("click", () => {
 // Procedural App Init calls
 const init = async () => {
 
+    hideAddressBar();
+
     const cityObjFromStorage = storage.getFromStorage();
     console.log(cityObjFromStorage)
     const cityObjFromApi = await cityGetCity(cityObjFromStorage.cityName);
@@ -116,4 +118,16 @@ const setUI = (city, weather) => {
     const ui = new UI();
 
     ui.paint(city, weather);
+}
+
+// hide address bar mobile
+export const hideAddressBar = () => {
+    if(!window.location.hash) {
+      if(document.height < window.outerHeight)
+        document.body.style.height = (window.outerHeight + 50) + 'px';
+      setTimeout( function(){ 
+          window.scrollTo(0, 1); 
+          document.body.style.height = 'auto'; 
+        }, 50 );
+    }
 }
