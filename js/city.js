@@ -2,11 +2,12 @@ export class City {
 
     constructor() {
 
-        this.apiKey = "j3ENYGdCfdfY2owpRK1uoVFh5r3AAKAO";
+        this.apiKey = "fRkGNEHIkTlzVQT3HM6NAlkLKAa00PsO";
         this.cityName;
         this.latitude;
         this.longitude;
         this.url;
+        this.cityObj;
     }
 
     cityBuildUrl(cityName) {
@@ -28,16 +29,27 @@ export class City {
     }
 
 
-    async getCityId() {
+    async getCityObj() {
 
         const response = await fetch(this.url);
 
         const data = await response.json();
         console.log(data)
-        
-        return {
-            cityId: data[0].Key,
-            cityName: data[0].LocalizedName
-        };
+
+        if(Array.isArray(data)) {
+            
+            this.cityObj = {
+                cityId: data[0].Key,
+                cityName: data[0].LocalizedName
+            };
+        } else {
+            
+            this.cityObj = {
+                cityId: data.Key,
+                cityName: data.LocalizedName
+            };
+        }
+
+        return this.cityObj;
     }
 }

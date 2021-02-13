@@ -20,7 +20,7 @@ searchDel.addEventListener("click", () => clearSearchInput())
 
 // Functions
 export const openCityForm = () => {
-
+    clearSearchInput();
     hideFooterBtns();
     disableUiBtns();
     citySection.classList.remove("hidden");

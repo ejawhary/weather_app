@@ -9,6 +9,8 @@ import "./functions.js"
 
 // init Storage
 const storage = new Storage();
+// init City
+const city = new City();
 
 
 // Event Listener
@@ -20,6 +22,9 @@ document.getElementById("cityForm").addEventListener("submit", (e) => {
     e.preventDefault();
     selectCity();
 });
+
+// Current position button calls functo get current pos (coords)
+document.getElementById("curr-loc").addEventListener("click", () => coordsGetCity())
 
 const refreshBtn = document.getElementById("refresh");
 refreshBtn.addEventListener("click", () => {
@@ -41,7 +46,6 @@ const init = async () => {
 
     const ui = setUI(cityObjFromApi.cityName, weather);
 
-    // const location = await getLocation();
 }
 
 // City Search
@@ -60,23 +64,23 @@ const selectCity = async () => {
 // Healper Functions
 
 const cityGetCity = async (cityName) => {
-    const city = new City();
-    
+       
     city.cityBuildUrl(cityName);
     
-    const cityKey = city.getCityId();
+    const cityObj = await city.getCityObj();
     
-    return cityKey;
+    return cityObj;
 }
 
-const coordsGetCity = async (latitude, longitude,) => {
-    const city = new City(latitude, longitude);
+const coordsGetCity = async () => {
+    const location = await getLocation();
     
-    city.coordBuildUrl();
+    city.coordBuildUrl(location.latitude, location.longitude);
     
-    const cityKey = city.getCityId();
+    const cityObj = await city.getCityObj();
     
-    return cityKey;
+    storage.setStorage(cityObj.cityId, cityObj.cityName);
+    init();
 }
 
 const getUserInput = () => {
