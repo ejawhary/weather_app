@@ -7,6 +7,13 @@ import { Weather } from "./weather.js"
 import { UI } from "./ui.js"
 import "./functions.js"
 
+// hide address bar mobile
+window.addEventListener("load", () => { 
+    setTimeout( () => { 
+        window.scrollTo(0, 1); 
+    }, 0); 
+});
+
 // init Storage
 const storage = new Storage();
 // init City
@@ -34,8 +41,6 @@ refreshBtn.addEventListener("click", () => {
 
 // Procedural App Init calls
 const init = async () => {
-
-    hideAddressBar();
 
     const cityObjFromStorage = storage.getFromStorage();
     console.log(cityObjFromStorage)
@@ -118,16 +123,4 @@ const setUI = (city, weather) => {
     const ui = new UI();
 
     ui.paint(city, weather);
-}
-
-// hide address bar mobile
-export const hideAddressBar = () => {
-    if(!window.location.hash) {
-      if(document.height < window.outerHeight)
-        document.body.style.height = (window.outerHeight + 50) + 'px';
-      setTimeout( function(){ 
-          window.scrollTo(0, 1); 
-          document.body.style.height = 'auto'; 
-        }, 50 );
-    }
 }
