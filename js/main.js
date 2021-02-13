@@ -7,13 +7,6 @@ import { Weather } from "./weather.js"
 import { UI } from "./ui.js"
 import "./functions.js"
 
-// hide address bar mobile
-window.addEventListener("load", () => { 
-    setTimeout( () => { 
-        window.scrollTo(0, 1); 
-    }, 0); 
-});
-
 // init Storage
 const storage = new Storage();
 // init City
@@ -124,3 +117,13 @@ const setUI = (city, weather) => {
 
     ui.paint(city, weather);
 }
+
+const toggleFullScreen = () => {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  }
