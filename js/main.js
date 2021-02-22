@@ -11,6 +11,8 @@ import "./functions.js"
 const storage = new Storage();
 // init City
 const city = new City();
+// init UI
+const ui = new UI();
 
 
 // Event Listener
@@ -23,7 +25,7 @@ document.getElementById("cityForm").addEventListener("submit", (e) => {
     selectCity();
 });
 
-// Current position button calls functo get current pos (coords)
+// Current position button calls function get current pos (coords)
 document.getElementById("curr-loc").addEventListener("click", () => coordsGetCity())
 
 const refreshBtn = document.getElementById("refresh");
@@ -36,13 +38,12 @@ refreshBtn.addEventListener("click", () => {
 const init = async () => {
 
     const cityObjFromStorage = storage.getFromStorage();
-    console.log(cityObjFromStorage)
+   
     const cityObjFromApi = await cityGetCity(cityObjFromStorage.cityName);
-    console.log(cityObjFromApi)
+
     
     const weather = await getWeather(cityObjFromApi.cityId);
 
-    console.log(weather)
 
     const ui = setUI(cityObjFromApi.cityName, weather);
 
@@ -54,9 +55,13 @@ const selectCity = async () => {
     const cityName = getUserInput();
 
     const cityObj = await cityGetCity(cityName);
-    storage.setStorage(cityObj.cityId, cityObj.cityName);
-    init();
-    setTimeout(() => closeCityForm(), 200)
+    if(cityObj.cityName === undefined) {
+        ui.cityNotFoundError()
+    } else {
+        storage.setStorage(cityObj.cityId, cityObj.cityName);
+        init();
+        setTimeout(() => closeCityForm(), 200)
+    }
     
 }
 
@@ -113,7 +118,6 @@ const getWeather = (cityKey) => {
 
 const setUI = (city, weather) => {
 
-    const ui = new UI();
 
     ui.paint(city, weather);
 }
@@ -126,4 +130,4 @@ const toggleFullScreen = () => {
         document.exitFullscreen();
       }
     }
-  }
+}

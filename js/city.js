@@ -2,7 +2,7 @@ export class City {
 
     constructor() {
 
-        this.apiKey = " KNKdjG2BQ1gPwkYGLfqfoLwTaZikFkOL";
+        this.apiKey = "rdepR8roMGOjJBSiL7Wb7gdT7G7ED7jU";
         this.cityName;
         this.latitude;
         this.longitude;
@@ -13,9 +13,7 @@ export class City {
     cityBuildUrl(cityName) {
 
         this.cityName= cityName;
-        console.log(this.cityName)
         const url = `https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${this.apiKey}&q=${this.cityName}`
-        console.log(url)
         this.url = url;
     }
 
@@ -34,20 +32,34 @@ export class City {
         const response = await fetch(this.url);
 
         const data = await response.json();
-        console.log(data)
-
+        
         if(Array.isArray(data)) {
             
-            this.cityObj = {
-                cityId: data[0].Key,
-                cityName: data[0].LocalizedName
-            };
-        } else {
+            if(data.length === 0) {
+                this.cityObj = {
+                    cityId: undefined,
+                    cityName: undefined
+                }
+            } else {
+                this.cityObj = {
+                    cityId: data[0].Key,
+                    cityName: data[0].LocalizedName
+                }
+            }
             
-            this.cityObj = {
-                cityId: data.Key,
-                cityName: data.LocalizedName
-            };
+        } else {
+
+            if(data.length === 0) {
+                this.cityObj = {
+                    cityId: undefined,
+                    cityName: undefined
+                }
+            } else {
+                this.cityObj = {
+                    cityId: data.Key,
+                    cityName: data.LocalizedName
+                }
+            }
         }
 
         return this.cityObj;

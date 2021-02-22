@@ -1,3 +1,5 @@
+import { clearSearchInput } from "./functions.js"
+
 export class UI {
 
     constructor(weatherData) {
@@ -20,8 +22,6 @@ export class UI {
         date = date.toLocaleString('en-GB', { hour12: false});
         
         this.loc.textContent = city;
-        // this.weatherImg.src = ("src","img/icons/"+weatherData.WeatherIcon+".png");
-        // console.log(this.weatherImg.src);
         this.date.textContent = date;
         this.temp.innerHTML = `${weatherData.Temperature.Metric.Value}&deg;${weatherData.Temperature.Metric.Unit}`;
         this.weatherStr.textContent = weatherData.WeatherText;
@@ -36,5 +36,20 @@ export class UI {
         this.windDirection.innerHTML = `${weatherData.Wind.Direction.Degrees}&deg; ${weatherData.Wind.Direction.English}`;
         this.windSpeed.textContent = `${weatherData.Wind.Speed.Metric.Value}${weatherData.Wind.Speed.Metric.Unit}`;
         this.pressure.textContent = `${weatherData.Pressure.Metric.Value}${weatherData.Pressure.Metric.Unit}`;
+    }
+
+    cityNotFoundError = () => {
+        const errorDiv = document.getElementById("error");
+        
+        clearSearchInput();
+    
+        errorDiv.classList.remove("hidden");
+        
+        setTimeout(() => {
+            errorDiv.classList.add("hidden");
+        }, 3000)
+
+        document
+    
     }
 } 

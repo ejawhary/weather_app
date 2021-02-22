@@ -64,7 +64,7 @@ const showX = () => {
     }
 }
 
-const clearSearchInput = () => {
+export const clearSearchInput = () => {
 
     searchInput.value = "";
     showX();
