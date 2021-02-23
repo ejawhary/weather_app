@@ -17,7 +17,10 @@ const ui = new UI();
 
 // Event Listener
 document.addEventListener("DOMContentLoaded", () => {
-    window.scrollTo(0, 10);
+    setTimeout(function(){
+        // This hides the address bar:
+        window.scrollTo(0, 1);
+    }, 0);
     init();
 });
 // City Search Button Event Listener
