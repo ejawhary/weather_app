@@ -6,6 +6,7 @@ export class Search {
     }
 
     getSearchResults() {
+
         this.searchInput = this.userInput;
 
         return this.searchInput;
