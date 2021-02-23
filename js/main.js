@@ -17,6 +17,7 @@ const ui = new UI();
 
 // Event Listener
 document.addEventListener("DOMContentLoaded", () => {
+    window.scrollTo(0, 1);
     init();
 });
 // City Search Button Event Listener
